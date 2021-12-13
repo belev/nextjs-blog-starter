@@ -6,3 +6,13 @@ export interface FrontMatter {
 export type Post = FrontMatter & {
   id: string;
 };
+
+export interface StaticPath {
+  params: {
+    slug: string;
+  };
+}
+export interface PostPath {
+  paths: StaticPath[];
+  fallback: boolean;
+}

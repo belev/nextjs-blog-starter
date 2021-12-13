@@ -1,11 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { FrontMatter } from '../types/Post';
+import { FrontMatter, Post } from '../types/Post';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
-export function getSortedPostsData() {
+export function getSortedPostsData(): Post[] {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
@@ -35,4 +35,28 @@ export function getSortedPostsData() {
       return 0;
     }
   });
+}
+
+export function getAllPostIds() {
+  const fileNames = fs.readdirSync(postsDirectory);
+
+  return fileNames.map((fileName) => {
+    return {
+      params: {
+        slug: fileName.replace(/\.md$/, '')
+      }
+    };
+  });
+}
+
+export function getPostData(slug: string): Post {
+  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+
+  const matterResult = matter(fileContents);
+
+  return {
+    id: slug,
+    ...(matterResult.data as FrontMatter)
+  };
 }
