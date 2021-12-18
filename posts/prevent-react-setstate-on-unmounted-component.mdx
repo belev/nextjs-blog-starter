@@ -1,0 +1,146 @@
+---
+title: 'Prevent React setState on unmounted component'
+date: '2020-05-16'
+description: 'Levaring RxJS Observables to avoid React setState on unmounted component warning once and for all.'
+tags:
+  - JavaScript
+  - React
+  - RxJS
+---
+
+![Code thinking](./code-thinking.png)
+
+If you are working with React, most probably you have already seen the below issues a lot.
+
+- `Warning: Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component. This is a no-op.`
+- `Warning: Can't call setState (or forceUpdate) on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in the componentWillUnmount method.`
+
+They can be caused easily by not cleaning up when component unmounts or route is changed:
+
+- using `setTimeout` or `setInterval`
+- an asynchronous request to the server for fetching data when component mounts
+- form submit handler sending request to the server
+
+### What is this indicating?
+
+This is just a warning and it is not a stopper for development, but as such it is showing that in our application code there may be some issues - for example, we can have a memory leak which can lead to performance issues.
+
+### What are we going to cover in this post?
+
+Today we are going to look at a solution leveraging `Observables` by using [RxJS](https://rxjs.dev/guide/overview) which will make us almost forget about the described issues. The solution is focused on making requests to the server, we are not going to cover `setTimeout`/`setInterval` usage. We are also going to be using hooks. I am going to provide more information about our use case and how we ended up with this solution.
+
+We are **not** going to look at other solutions like `Cancellable Promises`, [AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) or `isMounted` usage which is actually an antipattern - https://reactjs.org/blog/2015/12/16/ismounted-antipattern.html. We are **not** going to get in detail about `RxJS` as well.
+
+### How do we end up here?
+
+For a long time, we were using Promises for our requests. We started seeing the described warning more and more which was just showing us that we have to do something to solve it. I won't lie, at first we had a couple of usages of `isMounted` which no one liked. We felt that it is not actually solving the problem but it is just a workaround which prevented the call to `setState`. We knew that this can't be the solution for us because it doesn't seem OK to write such additional code for every request that we are going to make.
+
+The good thing though was that under the hood we were already using `RxJS` and `Observables`. We are working in a really big application so just removing the `Promise` usage wasn't a solution. We were going to gradually remove the `Promise` usage and start using only `Observables`. We should mention that we can unsubscribe from `Observable`, but again this is something that we should do for every request which is just not good enough...
+
+I am feeling grateful and want to thank Jafar Husain for the wonderful course [Asynchronous Programming in JavaScript (with Rx.js Observables)](https://frontendmasters.com/courses/asynchronous-javascript/) from which I learned so much and found the solution. The course is also available in Pluralsight - [link](https://www.pluralsight.com/courses/asynchronous-javascript-rxjs-observables).
+
+### What is the solution?
+
+##### Different way to think about our problem
+
+As Front-end developers, if we think more deeply about it, most of the things that we are doing can be described as a collection/stream of events happening over time. If we think about them as collection then this gives us new horizons because we know so many operations that we can do over collections (or at least I felt so). With a couple of operations like `map`, `filter`, `reduce`, `mergeMap`, `concatMap`, `flatMap`, `switchMap` we can achieve so much. Jafar Husain is describing all of this in much greater detail with great examples in his course - just give it a try.
+
+So, let's think about our request(s) as one collection (Observable) - let's call this one `A`. And our component unmounting as another - let's call it `B`. We would like to somehow combine those two in such a way that `A` should emit values until an event occurs in `B`.
+
+##### Choosing `RxJS` operator
+
+We described in an abstract way what we want to achieve. Now let's look at some of the implementation details. We are using `RxJS` which comes with a great number of operators that will solve most of our problems. When we look at the [operators](https://rxjs.dev/api#operators), [takeUntil](https://rxjs.dev/api/operators/takeUntil) looks perfect for our use case - "Emits the values emitted by the source Observable until a notifier Observable emits a value.". This is exactly what we wanted so now we know that we are going to use `takeUntil`.
+
+##### Going for the implementation
+
+We are going to implement a custom hook which will be used to solve our problem. Let's start with the basics and just declare the structure of our hook:
+
+```tsx
+import { Observable } from 'rxjs';
+const useUnmount$ = (): Observable<void> => {};
+
+export default useUnmount$;
+```
+
+Now we have our hook, but we should add the implementation. We should return `Observable` and be able to emit values. We are going to use `Subject` for this.
+
+```tsx
+import { Observable, Subject } from 'rxjs';
+const useUnmount$ = (): Observable<void> => {
+  const unmount$ = new Subject<void>();
+
+  return unmount$;
+};
+
+export default useUnmount$;
+```
+
+Good, but we are not there yet. We know that unmount will happen only once so we can emit and complete after this happens. We are going to use `useEffect` cleanup function to understand when the component is unmounted.
+
+```tsx
+import { Observable, Subject } from 'rxjs';
+import { useEffect } from 'react';
+
+const useUnmount$ = (): Observable<void> => {
+  const unmount$ = new Subject<void>();
+
+  useEffect(
+    () => () => {
+      // implicit return instead of wrapping in {} and using return
+      unmount$.next();
+      unmount$.complete();
+    },
+    [unmount$]
+  );
+
+  return unmount$;
+};
+
+export default useUnmount$;
+```
+
+It looks like we completed our implementation, but we are not yet. What is going to happen if the component where `useUnmount$` is used unmounts? We are going to create another `Subject`, emit, and complete the previous one. We wouldn't want this behavior, but instead emitting only once when the component in which is used unmounts. `useMemo` coming to the rescue here.
+
+```tsx
+import { Observable, Subject } from 'rxjs';
+import { useEffect, useMemo } from 'react';
+
+const useUnmount$ = (): Observable<void> => {
+  const unmount$ = useMemo(() => new Subject<void>(), []);
+
+  useEffect(
+    () => () => {
+      unmount$.next();
+      unmount$.complete();
+    },
+    [unmount$]
+  );
+
+  return unmount$;
+};
+
+export default useUnmount$;
+```
+
+With this, we completed the implementation of our custom hook, but we still have to plug it into our collection `A` which is responsible for our requests. We will imagine that our request abstraction is returning `Observable`. And now the only thing left is to use the `useUnmount$` hook.
+
+```tsx
+import { useCallback } from 'react';
+import { from } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+import useUnmount$ from './useUnmount';
+
+const useRequest = () => {
+  const unmount$ = useUnmount$();
+
+  // from("response") should be replaced by your implementation returning Observable
+  return useCallback(() => from('response').pipe(takeUntil(unmount$)), [unmount$]);
+};
+
+export default useRequest;
+```
+
+### Conclusion
+
+`Observables` can come in handy in many ways. It is a topic worth learning about and I believe it is going to be used more and more in the future. In combination with hooks, IMO we had come up with a very clean solution. It is saving us the cognitive load to think about cleaning up after each request that is made. I think this is a great win because there is one thing less to think/worry about while developing or reviewing a PR.

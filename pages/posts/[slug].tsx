@@ -1,5 +1,7 @@
-import Layout from '../../components/Layout';
+import { getMDXComponent } from 'mdx-bundler/client';
+import React from 'react';
 
+import Layout from '../../components/Layout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import { Post, StaticPath } from '../../types/Post';
 
@@ -12,7 +14,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: StaticPath) {
-  const post = getPostData(params.slug);
+  const post = await getPostData(params.slug);
   return {
     props: {
       post
@@ -25,6 +27,7 @@ interface Props {
 }
 
 const PostComponent = ({ post }: Props) => {
+  const Component = React.useMemo(() => post.code && getMDXComponent(post.code), [post.code]);
   return (
     <Layout>
       {post.title}
@@ -32,6 +35,7 @@ const PostComponent = ({ post }: Props) => {
       {post.id}
       <br />
       {post.date}
+      {Component && <Component />}
     </Layout>
   );
 };

@@ -2,61 +2,65 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { FrontMatter, Post } from '../types/Post';
+import getCompiledMDX from './prepare-mdx';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
-export function getSortedPostsData(): Post[] {
-  // Get file names under /posts
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
-    // Remove ".md" from file name to get id
-    const id = fileName.replace(/\.md$/, '');
+interface FileName {
+  fullFileName: string;
+  fileName: string;
+}
 
-    // Read markdown file as string
-    const fullPath = path.join(postsDirectory, fileName);
+function getPostsFileNames(): FileName[] {
+  return fs
+    .readdirSync(postsDirectory)
+    .filter((fileName) => fileName.endsWith('.mdx'))
+    .map((fullFileName) => ({
+      fullFileName,
+      fileName: fullFileName.replace(/\.mdx$/, '')
+    }));
+}
+
+export function getSortedPostsData(): Post[] {
+  const fileNames = getPostsFileNames();
+  const allPostsData = fileNames.map(({ fileName, fullFileName }) => {
+    const fullPath = path.join(postsDirectory, fullFileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
-    // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
 
-    // Combine the data with the id
     return {
-      id,
+      id: fileName,
       ...(matterResult.data as FrontMatter)
     };
   });
+
   // Sort posts by date
-  return allPostsData.sort(({ date: a }, { date: b }) => {
-    if (a < b) {
-      return 1;
-    } else if (a > b) {
-      return -1;
-    } else {
-      return 0;
-    }
-  });
+  return allPostsData.sort(({ date: a }, { date: b }) => b.localeCompare(a));
 }
 
 export function getAllPostIds() {
-  const fileNames = fs.readdirSync(postsDirectory);
+  const fileNames = getPostsFileNames();
 
-  return fileNames.map((fileName) => {
+  return fileNames.map(({ fileName }) => {
     return {
       params: {
-        slug: fileName.replace(/\.md$/, '')
+        slug: fileName
       }
     };
   });
 }
 
-export function getPostData(slug: string): Post {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
+export async function getPostData(slug: string): Promise<Post> {
+  const fullPath = path.join(postsDirectory, `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
   const matterResult = matter(fileContents);
+  const compiledMDX = await getCompiledMDX(fileContents, postsDirectory);
 
   return {
     id: slug,
-    ...(matterResult.data as FrontMatter)
+    ...(matterResult.data as FrontMatter),
+    code: compiledMDX.code
   };
 }

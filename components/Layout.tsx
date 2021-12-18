@@ -12,7 +12,7 @@ interface Props {
   home?: boolean;
 }
 
-export default function Layout({ children, home = false }: React.PropsWithChildren<Props>) {
+const Layout = ({ children, home = false }: React.PropsWithChildren<Props>) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -72,4 +72,6 @@ export default function Layout({ children, home = false }: React.PropsWithChildr
       )}
     </div>
   );
-}
+};
+
+export default Layout;
