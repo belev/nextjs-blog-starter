@@ -5,6 +5,7 @@ export interface FrontMatter {
 
 export type Post = FrontMatter & {
   id: string;
+  code?: string;
 };
 
 export interface StaticPath {
