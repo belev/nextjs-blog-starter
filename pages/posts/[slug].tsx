@@ -1,26 +1,31 @@
 import { getMDXComponent } from 'mdx-bundler/client';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
 
 import Layout from '../../components/Layout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
-import { Post, StaticPath } from '../../types/Post';
+import type { Post, StaticPath } from '../../types/Post';
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = () => {
   const paths = getAllPostIds();
   return {
     paths,
     fallback: false
   };
-}
+};
 
-export async function getStaticProps({ params }: StaticPath) {
+export const getStaticProps: GetStaticProps<Props, StaticPath['params']> = async ({ params }) => {
+  if (!params) {
+    throw new Error('Post slug is missing in [slug].tsx -> getStaticProps!');
+  }
+
   const post = await getPostData(params.slug);
   return {
     props: {
       post
     }
   };
-}
+};
 
 interface Props {
   post: Post;

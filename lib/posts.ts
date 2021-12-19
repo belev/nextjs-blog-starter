@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { FrontMatter, Post } from '../types/Post';
+import type { FrontMatter, Post, StaticPath } from '../types/Post';
 import getCompiledMDX from './prepare-mdx';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
@@ -39,7 +39,7 @@ export function getSortedPostsData(): Post[] {
   return allPostsData.sort(({ date: a }, { date: b }) => b.localeCompare(a));
 }
 
-export function getAllPostIds() {
+export function getAllPostIds(): StaticPath[] {
   const fileNames = getPostsFileNames();
 
   return fileNames.map(({ fileName }) => {

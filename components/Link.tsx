@@ -1,4 +1,5 @@
-import NextLink, { LinkProps } from 'next/link';
+import type { LinkProps } from 'next/link';
+import NextLink from 'next/link';
 
 const Link = ({ children, ...props }: React.PropsWithChildren<LinkProps>) => {
   return (

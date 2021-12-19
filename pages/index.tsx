@@ -1,17 +1,18 @@
+import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/Layout';
 import { getSortedPostsData } from '../lib/posts';
 import utilStyles from '../styles/utils.module.scss';
-import { Post } from '../types/Post';
+import type { Post } from '../types/Post';
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<Props> = () => {
   const posts = getSortedPostsData();
   return {
     props: {
       posts
     }
   };
-}
+};
 
 interface Props {
   posts: Post[];
