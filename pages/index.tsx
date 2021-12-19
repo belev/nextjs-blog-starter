@@ -39,7 +39,7 @@ const Home = ({ posts }: Props) => {
         <ul className={utilStyles.list}>
           {posts.map(({ slug, date, title }) => (
             <li className={utilStyles.listItem} key={slug}>
-              <Link href={`/posts/${slug}`}>{title}</Link>
+              <Link href={`/blog/${slug}`}>{title}</Link>
               <br />
               {date}
             </li>
