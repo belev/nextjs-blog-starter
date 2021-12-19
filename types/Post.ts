@@ -4,7 +4,7 @@ export interface FrontMatter {
 }
 
 export type Post = FrontMatter & {
-  id: string;
+  slug: string;
   code?: string;
 };
 

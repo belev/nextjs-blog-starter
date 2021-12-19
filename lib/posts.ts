@@ -30,7 +30,7 @@ export function getSortedPostsData(): Post[] {
     const matterResult = matter(fileContents);
 
     return {
-      id: fileName,
+      slug: fileName,
       ...(matterResult.data as FrontMatter)
     };
   });
@@ -59,7 +59,7 @@ export async function getPostData(slug: string): Promise<Post> {
   const compiledMDX = await getCompiledMDX(fileContents, postsDirectory);
 
   return {
-    id: slug,
+    slug,
     ...(matterResult.data as FrontMatter),
     code: compiledMDX.code
   };

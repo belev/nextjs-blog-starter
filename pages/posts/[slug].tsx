@@ -37,7 +37,7 @@ const PostComponent = ({ post }: Props) => {
     <Layout>
       {post.title}
       <br />
-      {post.id}
+      {post.slug}
       <br />
       {post.date}
       {Component && <Component />}

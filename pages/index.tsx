@@ -1,6 +1,8 @@
 import type { GetStaticProps } from 'next';
 import Head from 'next/head';
+import React from 'react';
 import Layout, { siteTitle } from '../components/Layout';
+import Link from '../components/Link';
 import { getSortedPostsData } from '../lib/posts';
 import utilStyles from '../styles/utils.module.scss';
 import type { Post } from '../types/Post';
@@ -35,11 +37,9 @@ const Home = ({ posts }: Props) => {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {posts.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              {title}
-              <br />
-              {id}
+          {posts.map(({ slug, date, title }) => (
+            <li className={utilStyles.listItem} key={slug}>
+              <Link href={`/posts/${slug}`}>{title}</Link>
               <br />
               {date}
             </li>
