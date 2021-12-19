@@ -3,6 +3,8 @@ import { Html, Head, Main, NextScript } from 'next/document';
 const MyDocument = () => (
   <Html lang="en">
     <Head>
+      <meta name="robots" content="noindex" />
+
       <link href="/favicons/favicon.ico" rel="shortcut icon" />
       <link href="/favicons/site.webmanifest" rel="manifest" />
       <link href="/favicons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
