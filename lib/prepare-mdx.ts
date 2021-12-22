@@ -1,6 +1,7 @@
 import { bundleMDX } from 'mdx-bundler';
 import { remarkMdxImages } from 'remark-mdx-images';
 import path from 'path';
+import rehypePrism from 'rehype-prism-plus';
 
 const getCompiledMDX = async (source: string, directory: string) => {
   if (process.platform === 'win32') {
@@ -25,6 +26,7 @@ const getCompiledMDX = async (source: string, directory: string) => {
     source,
     xdmOptions: (options) => {
       options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkMdxImages];
+      options.rehypePlugins = [...(options.rehypePlugins ?? []), rehypePrism];
 
       return options;
     },
