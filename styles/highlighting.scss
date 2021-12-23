@@ -48,6 +48,12 @@ pre[class*='language-'] {
   color: #db4c69;
   background: #1e1e1e;
 }
+
+:not(pre) > code {
+  padding: 3px;
+  border-radius: 3px;
+  background-color: lightgrey;
+}
 /*********************************************************
 * Tokens
 */
