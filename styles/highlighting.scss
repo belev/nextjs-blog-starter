@@ -1,7 +1,7 @@
 pre[class*='language-'],
 code[class*='language-'] {
   color: var(--base-black-85);
-  font-size: 13px;
+  font-size: 0.8125rem;
   text-shadow: none;
   font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', monospace;
   direction: ltr;
@@ -9,7 +9,6 @@ code[class*='language-'] {
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
-  line-height: 1.5;
   tab-size: 4;
   hyphens: none;
 }
@@ -48,7 +47,7 @@ pre[class*='language-'] {
   padding: 3px 6px;
   border-radius: 3px;
   background-color: var(--base-black-25);
-  font-size: 0.9em;
+  font-size: 1rem;
 }
 /*********************************************************
 * Tokens
