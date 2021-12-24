@@ -1,6 +1,6 @@
 pre[class*='language-'],
 code[class*='language-'] {
-  color: #d4d4d4;
+  color: var(--base-black-85);
   font-size: 13px;
   text-shadow: none;
   font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', monospace;
@@ -38,7 +38,7 @@ pre[class*='language-'] {
   padding: 16px;
   margin: 0.5em 0;
   overflow: auto;
-  background: #1e1e1e;
+  border: 1px solid var(--base-black-30);
   border-radius: 6px;
 }
 
@@ -52,7 +52,7 @@ pre[class*='language-'] {
 :not(pre) > code {
   padding: 3px;
   border-radius: 3px;
-  background-color: lightgrey;
+  background-color: var(--base-black-25);
 }
 /*********************************************************
 * Tokens
