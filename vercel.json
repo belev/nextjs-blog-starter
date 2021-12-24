@@ -1,0 +1,14 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/fonts/ibm-plex-sans-latin-italic.woff2",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31556952, immutable" }]
+    },
+    {
+      "source": "/fonts/ibm-plex-sans-latin-regular.woff2",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31556952, immutable" }]
+    }
+  ]
+}
