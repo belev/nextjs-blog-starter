@@ -1,5 +1,25 @@
 :root {
-  --color-primary: purple;
+  --color-primary: rgb(196, 17, 196);
+
+  --base-black: 0 0%;
+
+  --base-black-0: hsl(var(--base-black) 0%);
+  --base-black-10: hsl(var(--base-black) 10%);
+  --base-black-15: hsl(var(--base-black) 15%);
+  --base-black-20: hsl(var(--base-black) 20%);
+  --base-black-25: hsl(var(--base-black) 25%);
+  --base-black-30: hsl(var(--base-black) 30%);
+  --base-black-40: hsl(var(--base-black) 40%);
+  --base-black-50: hsl(var(--base-black) 50%);
+  --base-black-60: hsl(var(--base-black) 60%);
+  --base-black-70: hsl(var(--base-black) 70%);
+  --base-black-80: hsl(var(--base-black) 80%);
+  --base-black-85: hsl(var(--base-black) 85%);
+  --base-black-90: hsl(var(--base-black) 90%);
+  --base-black-100: hsl(var(--base-black) 100%);
+
+  --color-background: var(--base-black-10);
+  --color-text: var(--base-black-100);
 }
 
 html,
@@ -10,6 +30,9 @@ body {
     Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.6;
   font-size: 18px;
+
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
 * {

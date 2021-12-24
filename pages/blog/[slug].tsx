@@ -3,6 +3,7 @@ import type { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
 
 import Layout from '../../components/Layout';
+import MDXComponents from '../../components/mdx-components';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import type { Post, StaticPath } from '../../types/Post';
 
@@ -40,7 +41,7 @@ const PostComponent = ({ post }: Props) => {
       {post.slug}
       <br />
       {post.date}
-      {Component && <Component />}
+      {Component && <Component components={MDXComponents} />}
     </Layout>
   );
 };
