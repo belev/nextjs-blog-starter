@@ -36,9 +36,7 @@ const PostComponent = ({ post }: Props) => {
   const Component = React.useMemo(() => post.code && getMDXComponent(post.code), [post.code]);
   return (
     <Layout>
-      {post.title}
-      <br />
-      {post.slug}
+      <h1>{post.title}</h1>
       <br />
       {post.date}
       {Component && <Component components={MDXComponents} />}

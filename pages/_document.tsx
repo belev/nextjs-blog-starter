@@ -4,6 +4,20 @@ const MyDocument = () => (
   <Html lang="en">
     <Head>
       <meta name="robots" content="noindex" />
+      <link
+        rel="preload"
+        href="/fonts/ibm-plex-sans-latin-italic.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        href="/fonts/ibm-plex-sans-latin-regular.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
 
       <link href="/favicons/favicon.ico" rel="shortcut icon" />
       <link href="/favicons/site.webmanifest" rel="manifest" />

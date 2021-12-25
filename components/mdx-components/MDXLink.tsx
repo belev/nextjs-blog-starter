@@ -9,16 +9,10 @@ const MDXLink = (props: Props) => {
     return <a {...props} />;
   }
 
-  const isInternalLink = href.startsWith('#') || href.startsWith('/');
-
-  if (isInternalLink) {
-    return <Link href={href}>{children}</Link>;
-  }
-
   return (
-    <a className={props.className} href={href} target="_blank" rel="noopener noreferrer">
+    <Link href={href} className={props.className}>
       {children}
-    </a>
+    </Link>
   );
 };
 

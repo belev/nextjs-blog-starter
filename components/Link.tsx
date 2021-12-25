@@ -1,11 +1,28 @@
 import type { LinkProps } from 'next/link';
 import NextLink from 'next/link';
 
-const Link = ({ children, ...props }: React.PropsWithChildren<LinkProps>) => {
+type Props = React.PropsWithChildren<
+  Omit<LinkProps, 'href'> & {
+    href: string;
+    className?: string;
+  }
+>;
+
+const Link = ({ children, href, className }: Props) => {
+  const isInternalLink = href.startsWith('#') || href.startsWith('/');
+
+  if (isInternalLink) {
+    return (
+      <NextLink href={href}>
+        <a>{children}</a>
+      </NextLink>
+    );
+  }
+
   return (
-    <NextLink href={props.href}>
-      <a>{children}</a>
-    </NextLink>
+    <a className={className} href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
   );
 };
 
