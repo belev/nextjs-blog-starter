@@ -1,6 +1,6 @@
 .container {
-  max-width: 36rem;
-  padding: 3rem 1rem;
+  max-width: 648px;
+  padding: var(--space-xxl) var(--space-m);
   margin: 0 auto;
 }
 
@@ -11,5 +11,5 @@
 }
 
 .backToHome {
-  margin: 3rem 0 0;
+  margin: var(--space-xxl) 0 0;
 }

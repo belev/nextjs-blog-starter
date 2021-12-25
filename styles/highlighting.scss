@@ -1,7 +1,7 @@
 pre[class*='language-'],
 code[class*='language-'] {
   color: var(--base-black-85);
-  font-size: 0.8125rem;
+  font-size: var(--font-size-s);
   text-shadow: none;
   font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', monospace;
   direction: ltr;
@@ -29,11 +29,11 @@ code[class*='language-'] *::selection {
 }
 
 pre[class*='language-'] {
-  padding: 16px;
+  padding: var(--space-m);
   margin: 0.5em 0;
   overflow: auto;
   border: 1px solid var(--base-black-30);
-  border-radius: 6px;
+  border-radius: var(--radius-m);
 }
 
 :not(pre) > code[class*='language-'] {
@@ -45,9 +45,9 @@ pre[class*='language-'] {
 
 :not(pre) > code {
   padding: 3px 6px;
-  border-radius: 3px;
+  border-radius: var(--radius-s);
   background-color: var(--base-black-25);
-  font-size: 1rem;
+  font-size: var(--font-size-base);
 }
 /*********************************************************
 * Tokens
@@ -295,10 +295,8 @@ pre {
 
 .code-line {
   display: block;
-  padding-left: 16px;
-  padding-right: 16px;
-  margin-left: -16px;
-  margin-right: -16px;
+  padding: 0 var(--space-m);
+  margin: 0 calc(var(--space-m) * -1);
   border-left: 4px solid rgba(31, 41, 55, 0); /* Set code block color */
 }
 
@@ -311,18 +309,17 @@ pre {
 }
 
 .highlight-line {
-  margin-left: -16px;
-  margin-right: -16px;
+  margin: 0 calc(var(--space-m) * -1);
   background-color: rgba(55, 65, 81, 0.5); /* Set highlight bg color */
   border-left: 4px solid rgb(59, 130, 246); /* Set highlight accent border color */
 }
 
 .line-number::before {
   display: inline-block;
-  width: 1rem;
+  width: 16px;
   text-align: right;
-  margin-right: 16px;
-  margin-left: -8px;
+  margin-right: var(--space-m);
+  margin-left: calc(var(--space-xs) * -1);
   color: rgb(156, 163, 175); /* Line number color */
   content: attr(line);
 }

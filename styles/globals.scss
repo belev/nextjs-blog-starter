@@ -20,6 +20,25 @@
 
   --color-background: var(--base-black-10);
   --color-text: var(--base-black-100);
+
+  --font-size-s: 0.8125rem;
+  --font-size-base: 1rem;
+  --font-size-m: 1.1875rem;
+  --font-size-l: 1.625rem;
+  --font-size-xl: 2rem;
+  --font-size-xxl: 2.375rem;
+
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-s: 12px;
+  --space-m: 16px;
+  --space-l: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-2xl: 64px;
+
+  --radius-s: 3px;
+  --radius-m: 6px;
 }
 
 @font-face {
@@ -100,6 +119,10 @@ h6 {
 }
 
 p {
-  font-size: 1.1875rem;
-  margin-top: 32px;
+  font-size: var(--font-size-m);
+  margin-top: var(--space-xl);
+}
+
+li {
+  font-size: var(--font-size-m);
 }
