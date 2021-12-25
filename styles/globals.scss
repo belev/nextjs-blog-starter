@@ -107,7 +107,26 @@ select {
   font: inherit;
 }
 
+/**
+* Elements
+*/
+
 p,
+pre,
+ul {
+  margin-bottom: var(--space-xl);
+}
+
+p {
+  font-size: var(--font-size-m);
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+li {
+  font-size: var(--font-size-m);
+}
+
 h1,
 h2,
 h3,
@@ -116,13 +135,24 @@ h5,
 h6 {
   overflow-wrap: break-word;
   hyphens: auto;
+  margin-top: var(--space-xxl);
+  margin-bottom: var(--space-m);
 }
 
-p {
-  font-size: var(--font-size-m);
-  margin-top: var(--space-xl);
+h1 {
+  font-size: var(--font-size-xxl);
 }
 
-li {
+h2 {
+  font-size: var(--font-size-xl);
+}
+
+h3 {
+  font-size: var(--font-size-l);
+}
+
+h4,
+h5,
+h6 {
   font-size: var(--font-size-m);
 }
