@@ -1,6 +1,6 @@
 pre[class*='language-'],
 code[class*='language-'] {
-  color: var(--base-black-85);
+  color: var(--color-black-85);
   font-size: var(--font-size-s);
   text-shadow: none;
   font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', monospace;
@@ -31,7 +31,7 @@ code[class*='language-'] *::selection {
 pre[class*='language-'] {
   padding: var(--space-m);
   overflow: auto;
-  border: 1px solid var(--base-black-30);
+  border: 1px solid var(--color-black-30);
   border-radius: var(--radius-m);
 }
 
@@ -45,7 +45,7 @@ pre[class*='language-'] {
 :not(pre) > code {
   padding: 3px 6px;
   border-radius: var(--radius-s);
-  background-color: var(--base-black-25);
+  background-color: var(--color-black-25);
   font-size: var(--font-size-base);
 }
 /*********************************************************
