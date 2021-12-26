@@ -1,7 +1,7 @@
 pre[class*='language-'],
 code[class*='language-'] {
   color: var(--color-black-95);
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-base);
   text-shadow: none;
   font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', monospace;
   direction: ltr;
@@ -11,6 +11,13 @@ code[class*='language-'] {
   word-break: normal;
   tab-size: 4;
   hyphens: none;
+}
+
+@media (min-width: 768px) {
+  pre[class*='language-'],
+  code[class*='language-'] {
+    font-size: var(--font-size-s);
+  }
 }
 
 pre[class*='language-']::selection,
