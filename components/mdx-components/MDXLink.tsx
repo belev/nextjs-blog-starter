@@ -3,14 +3,13 @@ import Link from '../Link';
 
 type Props = JSX.IntrinsicElements['a'];
 
-const MDXLink = (props: Props) => {
-  const { href, children } = props;
+const MDXLink = ({ href, children, className }: Props) => {
   if (!href) {
-    return <a {...props} />;
+    throw new Error('Link without href - please provide href!');
   }
 
   return (
-    <Link href={href} className={props.className}>
+    <Link href={href} className={className} variant="primary">
       {children}
     </Link>
   );

@@ -1,8 +1,7 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from './Layout.module.scss';
 import utilStyles from '../styles/utils.module.scss';
-import Link from 'next/link';
+import Link from './Link';
 import React from 'react';
 
 const name = 'Martin Belev';
@@ -25,45 +24,13 @@ const Layout = ({ children, home = false }: React.PropsWithChildren<Props>) => {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.jpg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
+        {home && <h1 className={utilStyles.heading2Xl}>{name}</h1>}
       </header>
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
+          <Link href="/" variant="primary">
+            ← Back to home
           </Link>
         </div>
       )}

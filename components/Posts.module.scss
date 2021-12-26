@@ -1,0 +1,8 @@
+.link {
+  color: var(--color-text);
+  text-decoration: none;
+
+  &:hover .hovered {
+    color: var(--color-primary);
+  }
+}

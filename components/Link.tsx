@@ -1,20 +1,24 @@
 import type { LinkProps } from 'next/link';
 import NextLink from 'next/link';
+import classNames from 'clsx';
+import styles from './Link.module.scss';
 
 type Props = React.PropsWithChildren<
   Omit<LinkProps, 'href'> & {
     href: string;
     className?: string;
+    variant?: 'primary';
   }
 >;
 
-const Link = ({ children, href, className }: Props) => {
+const Link = ({ children, href, className: propsClassName, variant }: Props) => {
   const isInternalLink = href.startsWith('#') || href.startsWith('/');
+  const className = classNames(variant === 'primary' && styles.primary, propsClassName);
 
   if (isInternalLink) {
     return (
       <NextLink href={href}>
-        <a>{children}</a>
+        <a className={className}>{children}</a>
       </NextLink>
     );
   }

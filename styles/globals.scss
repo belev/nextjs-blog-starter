@@ -103,15 +103,6 @@ body #__next {
   -webkit-font-smoothing: antialiased;
 }
 
-a {
-  color: var(--color-primary);
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
 img,
 svg,
 video {
