@@ -2,6 +2,7 @@
   --base-black: 0 0%;
 
   --color-black-0: hsl(var(--base-black) 0%);
+  --color-black-5: hsl(var(--base-black) 5%);
   --color-black-10: hsl(var(--base-black) 10%);
   --color-black-15: hsl(var(--base-black) 15%);
   --color-black-20: hsl(var(--base-black) 20%);
@@ -14,6 +15,7 @@
   --color-black-80: hsl(var(--base-black) 80%);
   --color-black-85: hsl(var(--base-black) 85%);
   --color-black-90: hsl(var(--base-black) 90%);
+  --color-black-95: hsl(var(--base-black) 95%);
   --color-black-100: hsl(var(--base-black) 100%);
 
   --base-purple: 275 100%;
@@ -30,7 +32,7 @@
   --color-purple-95: hsl(var(--base-purple) 95%);
 
   --color-primary: var(--color-purple-70);
-  --color-background: var(--color-black-10);
+  --color-background: var(--color-black-5);
   --color-text: var(--color-black-100);
 
   --font-size-s: 0.8125rem;
