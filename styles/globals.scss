@@ -35,7 +35,7 @@
   --color-background: var(--color-black-5);
   --color-text: var(--color-black-100);
 
-  --font-size-s: 0.8125rem;
+  --font-size-s: 0.875rem;
   --font-size-base: 1rem;
   --font-size-m: 1.1875rem;
   --font-size-l: 1.625rem;
@@ -69,6 +69,11 @@
   font-weight: 100 900;
   font-display: optional;
   src: url(/fonts/ibm-plex-sans-latin-regular.woff2) format('woff2');
+}
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 html,
