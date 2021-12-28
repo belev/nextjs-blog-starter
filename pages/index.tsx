@@ -2,10 +2,11 @@ import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import Layout, { siteTitle } from '../components/Layout';
+import Link from '../components/Link';
 import Posts from '../components/Posts';
 import { getSortedPostsData } from '../lib/posts';
-import utilStyles from '../styles/utils.module.scss';
 import type { Post } from '../types/Post';
+import styles from './index.module.scss';
 
 export const getStaticProps: GetStaticProps<Props> = () => {
   const posts = getSortedPostsData();
@@ -26,12 +27,20 @@ const Home = ({ posts }: Props) => {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
+      <section>
         <p>{`Welcome 👋!`}</p>
+        <p>Introduction goes here...</p>
       </section>
 
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
+      <section>
+        <div className={styles.latestPostsWrapper}>
+          <h2 className={styles.heading}>Latest Posts</h2>
+          <div>
+            <Link href="/blog" variant="text">
+              Read all posts
+            </Link>
+          </div>
+        </div>
         <Posts posts={posts} />
       </section>
     </Layout>

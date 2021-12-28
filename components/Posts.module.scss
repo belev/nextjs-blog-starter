@@ -2,7 +2,32 @@
   color: var(--color-text);
   text-decoration: none;
 
-  &:hover .hovered {
-    color: var(--color-primary);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      .heading {
+        color: var(--color-primary);
+      }
+
+      .arrow {
+        opacity: 1;
+      }
+    }
   }
+}
+
+.arrow {
+  color: var(--color-primary);
+  opacity: 0;
+  transition: opacity 250ms;
+}
+
+.description {
+  font-size: var(--font-size-base);
+  margin-bottom: var(--space-m);
+}
+
+.readMore {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-base);
 }

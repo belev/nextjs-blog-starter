@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import styles from './Layout.module.scss';
-import utilStyles from '../styles/utils.module.scss';
 import Link from './Link';
 import React from 'react';
 
@@ -23,9 +22,7 @@ const Layout = ({ children, home = false }: React.PropsWithChildren<Props>) => {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
-        {home && <h1 className={utilStyles.heading2Xl}>{name}</h1>}
-      </header>
+      <header className={styles.header}>{home && <h1>{name}</h1>}</header>
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>

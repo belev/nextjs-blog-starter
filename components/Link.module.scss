@@ -1,8 +1,57 @@
+.link {
+  text-decoration: underline;
+}
+
 .primary {
   color: var(--color-primary);
-  text-decoration: none;
+}
 
-  &:hover {
-    text-decoration: underline;
+.text {
+  color: var(--color-black-50);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link {
+    position: relative;
+    white-space: nowrap;
+    text-decoration: none;
+
+    &:hover {
+      &::before {
+        transform: scaleX(1);
+      }
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      transition: transform 0.3s ease-in-out;
+      left: 0px;
+      bottom: 0px;
+      width: 100%;
+      height: 2px;
+      transform: scaleX(0);
+    }
+  }
+
+  .primary {
+    color: var(--color-primary);
+
+    &::before {
+      background-color: var(--color-primary);
+    }
+  }
+
+  .text {
+    color: var(--color-black-50);
+    transition: color 0.3s ease-in-out;
+
+    &::before {
+      background-color: var(--color-text);
+    }
+
+    &:hover {
+      color: var(--color-text);
+    }
   }
 }
