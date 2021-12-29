@@ -8,7 +8,7 @@ import { getSortedPostsData } from '../lib/posts';
 import type { Post } from '../types/Post';
 
 export const getStaticProps: GetStaticProps<Props> = () => {
-  const posts = getSortedPostsData({ limit: 5 });
+  const posts = getSortedPostsData();
   return {
     props: {
       posts
@@ -20,21 +20,18 @@ interface Props {
   posts: Post[];
 }
 
-const Home = ({ posts }: Props) => {
+const Blog = ({ posts }: Props) => {
   return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section>
-        <p>{`Welcome 👋! Introduce yourself here.`}</p>
-      </section>
 
-      <PageSection heading="Latest Posts" navigation={{ href: '/blog', text: 'Read all posts' }}>
+      <PageSection heading="All Posts">
         <Posts posts={posts} />
       </PageSection>
     </Layout>
   );
 };
 
-export default Home;
+export default Blog;

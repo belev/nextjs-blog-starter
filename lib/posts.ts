@@ -21,7 +21,7 @@ function getPostsFileNames(): FileName[] {
     }));
 }
 
-export function getSortedPostsData(): Post[] {
+export function getSortedPostsData({ limit }: { limit?: number } = {}): Post[] {
   const fileNames = getPostsFileNames();
   const allPostsData = fileNames.map(({ fileName, fullFileName }) => {
     const fullPath = path.join(postsDirectory, fullFileName);
@@ -36,7 +36,8 @@ export function getSortedPostsData(): Post[] {
   });
 
   // Sort posts by date
-  return allPostsData.sort(({ date: a }, { date: b }) => b.localeCompare(a));
+  const sortedPosts = allPostsData.sort(({ date: a }, { date: b }) => b.localeCompare(a));
+  return limit ? sortedPosts.slice(0, limit) : sortedPosts;
 }
 
 export function getAllPostIds(): StaticPath[] {

@@ -35,15 +35,12 @@
   }
 
   .primary {
-    color: var(--color-primary);
-
     &::before {
       background-color: var(--color-primary);
     }
   }
 
   .text {
-    color: var(--color-black-50);
     transition: color 0.3s ease-in-out;
 
     &::before {
