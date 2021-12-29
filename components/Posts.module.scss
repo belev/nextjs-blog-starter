@@ -1,6 +1,7 @@
 .link {
   color: var(--color-text);
   text-decoration: none;
+  display: block;
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
