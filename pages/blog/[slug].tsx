@@ -37,7 +37,6 @@ const PostComponent = ({ post }: Props) => {
   return (
     <Layout>
       <h1>{post.title}</h1>
-      <br />
       {post.date}
       {Component && <Component components={MDXComponents} />}
     </Layout>
