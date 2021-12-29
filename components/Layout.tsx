@@ -1,16 +1,11 @@
 import Head from 'next/head';
 import styles from './Layout.module.scss';
-import Link from './Link';
 import React from 'react';
+import Header from './Header/Header';
 
-const name = 'Martin Belev';
 export const siteTitle = 'Next.js Sample Website';
 
-interface Props {
-  home?: boolean;
-}
-
-const Layout = ({ children, home = false }: React.PropsWithChildren<Props>) => {
+const Layout = ({ children }: React.PropsWithChildren<unknown>) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -22,15 +17,8 @@ const Layout = ({ children, home = false }: React.PropsWithChildren<Props>) => {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>{home && <h1>{name}</h1>}</header>
+      <Header />
       <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/" variant="primary">
-            ← Back to home
-          </Link>
-        </div>
-      )}
     </div>
   );
 };

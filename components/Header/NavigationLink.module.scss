@@ -1,0 +1,18 @@
+.navigationLink {
+  color: var(--color-black-60);
+  padding: var(--space-xxs) var(--space-s);
+  border-radius: var(--radius-m);
+  text-decoration: none;
+  transition: background-color 0.3s;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: var(--color-black-15);
+    }
+  }
+}
+
+.active {
+  color: var(--color-text);
+  font-weight: 600;
+}
