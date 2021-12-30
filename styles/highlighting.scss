@@ -61,6 +61,10 @@ pre[class*='language-'] {
   color: var(--color-black-70);
 }
 
+.token.punctuation {
+  color: var(--color-black-95);
+}
+
 .token.comment {
   color: #6a9955;
 }
