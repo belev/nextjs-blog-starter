@@ -22,7 +22,7 @@ interface Props {
 
 const Home = ({ posts }: Props) => {
   return (
-    <Layout home>
+    <Layout>
       <Head>
         <title>{siteTitle}</title>
       </Head>
