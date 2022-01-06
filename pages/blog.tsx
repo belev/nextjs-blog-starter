@@ -1,7 +1,7 @@
 import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import Layout, { siteTitle } from '../components/Layout';
+import Layout from '../components/Layout';
 import PageSection from '../components/PageSection';
 import Posts from '../components/Posts';
 import { getSortedPostsData } from '../lib/posts';
@@ -21,15 +21,15 @@ interface Props {
 }
 
 const Blog = ({ posts }: Props) => (
-    <Layout>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
+  <Layout>
+    <Head>
+      <title>Blog</title>
+    </Head>
 
-      <PageSection heading="All Posts">
-        <Posts posts={posts} />
-      </PageSection>
-    </Layout>
-  );
+    <PageSection heading="All Posts">
+      <Posts posts={posts} />
+    </PageSection>
+  </Layout>
+);
 
 export default Blog;

@@ -1,0 +1,8 @@
+{
+  "siteTitle": "Martin Belev",
+  "siteUrl": "https://belev-blog-starter.vercel.app",
+  "siteDescription": "Martin Belev is front end developer who specializes in JavaScript/TypeScript and React.",
+  "siteLanguage": "en",
+  "siteImage": "/images/banner.png",
+  "author": "@BelevMartin"
+}

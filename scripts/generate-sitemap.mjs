@@ -1,6 +1,7 @@
 import { writeFileSync } from 'fs';
 import { globby } from 'globby';
 import prettier from 'prettier';
+import siteConfig from '../siteConfig.json';
 
 async function generate() {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
@@ -26,7 +27,7 @@ async function generate() {
 
             return `
               <url>
-                  <loc>${`https://nextjs-playground-rosy.vercel.app${route}`}</loc>
+                  <loc>${`${siteConfig.siteUrl}${route}`}</loc>
                   <changefreq>daily</changefreq>
                   <priority>0.7</priority>
               </url>
