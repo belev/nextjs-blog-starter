@@ -20,8 +20,7 @@ interface Props {
   posts: Post[];
 }
 
-const Blog = ({ posts }: Props) => {
-  return (
+const Blog = ({ posts }: Props) => (
     <Layout>
       <Head>
         <title>{siteTitle}</title>
@@ -32,6 +31,5 @@ const Blog = ({ posts }: Props) => {
       </PageSection>
     </Layout>
   );
-};
 
 export default Blog;

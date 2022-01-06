@@ -9,8 +9,7 @@ type Props = React.PropsWithChildren<{
   };
 }>;
 
-const PageSection = ({ heading, navigation, children }: Props) => {
-  return (
+const PageSection = ({ heading, navigation, children }: Props) => (
     <section>
       <div className={styles.latestPostsWrapper}>
         <h2 className={styles.heading}>{heading}</h2>
@@ -25,6 +24,5 @@ const PageSection = ({ heading, navigation, children }: Props) => {
       {children}
     </section>
   );
-};
 
 export default PageSection;

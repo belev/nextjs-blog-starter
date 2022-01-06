@@ -5,8 +5,7 @@ import Header from './Header/Header';
 
 export const siteTitle = 'Next.js Sample Website';
 
-const Layout = ({ children }: React.PropsWithChildren<unknown>) => {
-  return (
+const Layout = ({ children }: React.PropsWithChildren<unknown>) => (
     <div className={styles.container}>
       <Head>
         <meta name="description" content="Learn how to build a personal website using Next.js" />
@@ -21,6 +20,5 @@ const Layout = ({ children }: React.PropsWithChildren<unknown>) => {
       <main>{children}</main>
     </div>
   );
-};
 
 export default Layout;

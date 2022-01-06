@@ -8,8 +8,7 @@ interface Props {
   posts: Post[];
 }
 
-const Posts = ({ posts }: Props) => {
-  return (
+const Posts = ({ posts }: Props) => (
     <>
       {posts.map(({ slug, title, description }) => (
         <article key={slug}>
@@ -28,6 +27,5 @@ const Posts = ({ posts }: Props) => {
       ))}
     </>
   );
-};
 
 export default Posts;

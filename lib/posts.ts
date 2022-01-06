@@ -43,13 +43,11 @@ export function getSortedPostsData({ limit }: { limit?: number } = {}): Post[] {
 export function getAllPostIds(): StaticPath[] {
   const fileNames = getPostsFileNames();
 
-  return fileNames.map(({ fileName }) => {
-    return {
-      params: {
-        slug: fileName
-      }
-    };
-  });
+  return fileNames.map(({ fileName }) => ({
+    params: {
+      slug: fileName
+    }
+  }));
 }
 
 export async function getPostData(slug: string): Promise<Post> {

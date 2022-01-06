@@ -1,8 +1,7 @@
 import styles from './Header.module.scss';
 import NavigationLink from './NavigationLink';
 
-const Header = () => {
-  return (
+const Header = () => (
     <header className={styles.header}>
       <nav className={styles.navigation}>
         <NavigationLink href="/">Home</NavigationLink>
@@ -11,6 +10,5 @@ const Header = () => {
       </nav>
     </header>
   );
-};
 
 export default Header;

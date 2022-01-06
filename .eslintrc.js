@@ -15,6 +15,7 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   rules: {
     '@typescript-eslint/consistent-type-imports': 'error',
-    '@typescript-eslint/no-duplicate-imports': ['error']
+    '@typescript-eslint/no-duplicate-imports': ['error'],
+    'arrow-body-style': ['error', 'as-needed']
   }
 };
