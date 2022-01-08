@@ -3,8 +3,7 @@ import { globby } from 'globby';
 import prettier from 'prettier';
 import siteConfig from '../siteConfig.json';
 
-async function generate() {
-  const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
+(async () => {
   const pages = await globby([
     'pages/*.tsx',
     'posts/*.mdx',
@@ -37,6 +36,7 @@ async function generate() {
     </urlset>
     `;
 
+  const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
   const formatted = prettier.format(sitemap, {
     ...prettierConfig,
     parser: 'html'
@@ -45,6 +45,4 @@ async function generate() {
   writeFileSync('public/sitemap.xml', formatted);
 
   console.log('Generated public/sitemap.xml successfully 🚀');
-}
-
-generate();
+})();

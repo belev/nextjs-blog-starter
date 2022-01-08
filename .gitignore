@@ -37,3 +37,4 @@ yarn-error.log*
 *.tsbuildinfo
 
 public/sitemap.xml
+public/rss.xml
