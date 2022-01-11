@@ -16,6 +16,12 @@
   }
 }
 
+.heading {
+  font-size: var(--font-size-l);
+  margin-top: var(--space-xxl);
+  margin-bottom: var(--space-m);
+}
+
 .arrow {
   color: var(--color-primary);
   opacity: 0;
