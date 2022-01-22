@@ -28,5 +28,5 @@
   transform: translate(-150%, -50%);
   color: inherit;
   min-width: 20px;
-  scroll-margin-top: 64px;
+  scroll-margin-top: var(--space-xxl);
 }
