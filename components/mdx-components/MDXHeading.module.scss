@@ -29,4 +29,8 @@
   color: inherit;
   min-width: 20px;
   scroll-margin-top: var(--space-xxl);
+
+  @media (max-width: 680px) {
+    display: none;
+  }
 }
