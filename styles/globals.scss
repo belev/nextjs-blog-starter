@@ -74,6 +74,11 @@
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
 }
 
 html,
@@ -145,24 +150,4 @@ h5,
 h6 {
   overflow-wrap: break-word;
   hyphens: auto;
-  margin-top: var(--space-xxl);
-  margin-bottom: var(--space-m);
-}
-
-h1 {
-  font-size: var(--font-size-xxl);
-}
-
-h2 {
-  font-size: var(--font-size-xl);
-}
-
-h3 {
-  font-size: var(--font-size-l);
-}
-
-h4,
-h5,
-h6 {
-  font-size: var(--font-size-m);
 }

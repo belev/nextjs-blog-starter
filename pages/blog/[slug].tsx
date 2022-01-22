@@ -6,6 +6,7 @@ import Layout from '../../components/Layout';
 import MDXComponents from '../../components/mdx-components';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import type { Post, StaticPath } from '../../types/Post';
+import styles from './[slug].module.scss';
 
 export const getStaticPaths: GetStaticPaths = () => {
   const paths = getAllPostIds();
@@ -36,7 +37,7 @@ const PostComponent = ({ post }: Props) => {
   const Component = React.useMemo(() => post.code && getMDXComponent(post.code), [post.code]);
   return (
     <Layout>
-      <h1>{post.title}</h1>
+      <h1 className={styles.heading}>{post.title}</h1>
       {post.date}
       {Component && <Component components={MDXComponents} />}
     </Layout>
