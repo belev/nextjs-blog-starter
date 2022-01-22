@@ -1,6 +1,10 @@
 import React from 'react';
 import classNames from 'clsx';
+import kebabCase from 'lodash.kebabcase';
 import styles from './MDXHeading.module.scss';
+import Link from '../Link';
+import Anchor from '../icons/Anchor';
+import VisuallyHidden from '../VisuallyHidden/VisuallyHidden';
 
 type Tag = keyof Pick<JSX.IntrinsicElements, 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
 
@@ -9,8 +13,18 @@ interface Props
   tag: Tag;
 }
 
-const MDXHeading = ({ tag: Tag, children, ...rest }: Props) => (
-  <Tag className={classNames(styles.heading, styles[Tag])}>{children}</Tag>
-);
+const MDXHeading = ({ tag: Tag, children }: Props) => {
+  const id = kebabCase(children as string);
+
+  return (
+    <Tag className={classNames(styles.heading, styles[Tag])}>
+      <Link href={`#${id}`} id={id} className={styles.anchor}>
+        <Anchor width="20" height="20" />
+        <VisuallyHidden>Link to {children}</VisuallyHidden>
+      </Link>
+      <span>{children}</span>
+    </Tag>
+  );
+};
 
 export default MDXHeading;
