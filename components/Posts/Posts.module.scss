@@ -1,7 +1,7 @@
 .link {
-  color: var(--color-text);
-  text-decoration: none;
   display: block;
+  text-decoration: none;
+  color: var(--color-text);
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
@@ -17,20 +17,20 @@
 }
 
 .heading {
-  font-size: var(--font-size-l);
   margin-top: var(--space-xxl);
   margin-bottom: var(--space-m);
+  font-size: var(--font-size-l);
 }
 
 .arrow {
-  color: var(--color-primary);
-  opacity: 0;
   transition: opacity 250ms;
+  opacity: 0;
+  color: var(--color-primary);
 }
 
 .description {
-  font-size: var(--font-size-base);
   margin-bottom: var(--space-m);
+  font-size: var(--font-size-base);
 }
 
 .readMore {
