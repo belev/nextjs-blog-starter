@@ -26,8 +26,8 @@
   position: absolute;
   top: 50%;
   transform: translate(-150%, -50%);
-  color: inherit;
   min-width: 20px;
+  color: inherit;
   scroll-margin-top: var(--space-xxl);
 
   @media (max-width: 680px) {

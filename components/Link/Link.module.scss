@@ -13,24 +13,24 @@
 @media (hover: hover) and (pointer: fine) {
   .link {
     position: relative;
-    white-space: nowrap;
     text-decoration: none;
+    white-space: nowrap;
+
+    &::before {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transform: scaleX(0);
+      transition: transform 0.3s ease-in-out;
+      width: 100%;
+      height: 2px;
+      content: '';
+    }
 
     &:hover {
       &::before {
         transform: scaleX(1);
       }
-    }
-
-    &::before {
-      content: '';
-      position: absolute;
-      transition: transform 0.3s ease-in-out;
-      left: 0px;
-      bottom: 0px;
-      width: 100%;
-      height: 2px;
-      transform: scaleX(0);
     }
   }
 

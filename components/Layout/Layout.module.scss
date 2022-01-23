@@ -1,8 +1,8 @@
 .container {
-  max-width: 648px;
-  padding: 0 var(--space-m);
-  margin: 0 auto;
-  height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  margin: 0 auto;
+  padding: 0 var(--space-m);
+  max-width: 648px;
+  height: 100%;
 }

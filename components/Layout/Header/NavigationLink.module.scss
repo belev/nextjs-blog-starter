@@ -1,9 +1,9 @@
 .navigationLink {
-  color: var(--color-black-60);
-  padding: var(--space-xxs) var(--space-s);
-  border-radius: var(--radius-m);
-  text-decoration: none;
   transition: background-color 0.3s;
+  border-radius: var(--radius-m);
+  padding: var(--space-xxs) var(--space-s);
+  text-decoration: none;
+  color: var(--color-black-60);
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
