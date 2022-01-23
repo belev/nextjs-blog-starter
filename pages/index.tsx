@@ -1,6 +1,7 @@
 import type { GetStaticProps } from 'next';
 import React from 'react';
 import Layout from '../components/Layout';
+import PageInformation from '../components/PageInformation/PageInformation';
 import PageSection from '../components/PageSection';
 import Posts from '../components/Posts';
 import { getSortedPostsData } from '../lib/posts';
@@ -21,9 +22,9 @@ interface Props {
 
 const Home = ({ posts }: Props) => (
   <Layout>
-    <section>
+    <PageInformation heading="Martin Belev">
       <p>{`Welcome 👋! Introduce yourself here.`}</p>
-    </section>
+    </PageInformation>
 
     <PageSection heading="Latest Posts" navigation={{ href: '/blog', text: 'Read all posts' }}>
       <Posts posts={posts} />

@@ -10,19 +10,19 @@ type Props = React.PropsWithChildren<{
 }>;
 
 const PageSection = ({ heading, navigation, children }: Props) => (
-    <section>
-      <div className={styles.latestPostsWrapper}>
-        <h2 className={styles.heading}>{heading}</h2>
-        {navigation && (
-          <div>
-            <Link href={navigation.href} variant="text">
-              {navigation.text}
-            </Link>
-          </div>
-        )}
-      </div>
-      {children}
-    </section>
-  );
+  <section>
+    <div className={styles.headingWrapper}>
+      <h2 className={styles.heading}>{heading}</h2>
+      {navigation && (
+        <div>
+          <Link href={navigation.href} variant="text">
+            {navigation.text}
+          </Link>
+        </div>
+      )}
+    </div>
+    {children}
+  </section>
+);
 
 export default PageSection;

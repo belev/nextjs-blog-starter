@@ -2,6 +2,7 @@ import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import Layout from '../components/Layout';
+import PageInformation from '../components/PageInformation/PageInformation';
 import PageSection from '../components/PageSection';
 import Posts from '../components/Posts';
 import { getSortedPostsData } from '../lib/posts';
@@ -25,6 +26,8 @@ const Blog = ({ posts }: Props) => (
     <Head>
       <title>Blog</title>
     </Head>
+
+    <PageInformation heading="Blog" />
 
     <PageSection heading="All Posts">
       <Posts posts={posts} />
