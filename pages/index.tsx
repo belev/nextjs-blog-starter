@@ -6,6 +6,7 @@ import PageSection from '../components/PageSection/PageSection';
 import Posts from '../components/Posts/Posts';
 import { getSortedPostsData } from '../lib/posts';
 import type { Post } from '../types/Post';
+import siteConfig from '../siteConfig.json';
 
 export const getStaticProps: GetStaticProps<Props> = () => {
   const posts = getSortedPostsData({ limit: 5 });
@@ -22,7 +23,7 @@ interface Props {
 
 const Home = ({ posts }: Props) => (
   <Layout>
-    <PageInformation heading="Martin Belev">
+    <PageInformation heading={siteConfig.siteTitle}>
       <p>{`Welcome 👋! Introduce yourself here.`}</p>
     </PageInformation>
 
