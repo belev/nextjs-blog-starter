@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styles from './Layout.module.scss';
 import React from 'react';
 import Header from './Header/Header';
-import siteConfig from '../siteConfig.json';
+import siteConfig from '../../siteConfig.json';
 
 const Layout = ({ children }: React.PropsWithChildren<unknown>) => (
   <div className={styles.container}>

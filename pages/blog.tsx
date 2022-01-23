@@ -1,10 +1,10 @@
 import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import Layout from '../components/Layout';
+import Layout from '../components/Layout/Layout';
 import PageInformation from '../components/PageInformation/PageInformation';
-import PageSection from '../components/PageSection';
-import Posts from '../components/Posts';
+import PageSection from '../components/PageSection/PageSection';
+import Posts from '../components/Posts/Posts';
 import { getSortedPostsData } from '../lib/posts';
 import type { Post } from '../types/Post';
 

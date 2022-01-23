@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import classNames from 'clsx';
-import Link from '../Link';
+import Link from '../../Link/Link';
 import styles from './NavigationLink.module.scss';
 
 type Props = React.PropsWithChildren<{ href: string }>;

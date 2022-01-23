@@ -2,7 +2,7 @@ import { getMDXComponent } from 'mdx-bundler/client';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
 
-import Layout from '../../components/Layout';
+import Layout from '../../components/Layout/Layout';
 import MDXComponents from '../../components/mdx-components';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import type { Post, StaticPath } from '../../types/Post';

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
-import Layout from '../components/Layout';
+import Layout from '../components/Layout/Layout';
 import PageInformation from '../components/PageInformation/PageInformation';
 import siteConfig from '../siteConfig.json';
 

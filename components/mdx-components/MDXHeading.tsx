@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'clsx';
 import kebabCase from 'lodash.kebabcase';
 import styles from './MDXHeading.module.scss';
-import Link from '../Link';
+import Link from '../Link/Link';
 import VisuallyHidden from '../VisuallyHidden/VisuallyHidden';
 import Icon from '../Icon/Icon';
 

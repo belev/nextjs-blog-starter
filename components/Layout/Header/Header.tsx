@@ -1,8 +1,8 @@
 import NavigationLink from './NavigationLink';
-import Link from '../Link';
-import siteConfig from '../../siteConfig.json';
+import Link from '../../Link/Link';
+import siteConfig from '../../../siteConfig.json';
 import styles from './Header.module.scss';
-import Icon from '../Icon/Icon';
+import Icon from '../../Icon/Icon';
 
 const Header = () => (
   <header className={styles.header}>

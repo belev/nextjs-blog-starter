@@ -1,7 +1,7 @@
 import React from 'react';
-import type { Post } from '../types/Post';
-import Icon from './Icon/Icon';
-import Link from './Link';
+import type { Post } from '../../types/Post';
+import Icon from '../Icon/Icon';
+import Link from '../Link/Link';
 import styles from './Posts.module.scss';
 
 interface Props {
