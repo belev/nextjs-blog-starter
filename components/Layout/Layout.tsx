@@ -15,7 +15,7 @@ const Layout = ({ children }: React.PropsWithChildren<unknown>) => (
       <meta name="twitter:card" content="summary_large_image" />
     </Head>
     <Header />
-    <main>{children}</main>
+    <main className={styles.main}>{children}</main>
     <Footer />
   </div>
 );

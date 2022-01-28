@@ -1,8 +1,12 @@
 .container {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   padding: 0 var(--space-m);
   max-width: 648px;
   height: 100%;
+}
+
+.main {
+  flex-grow: 1;
 }
