@@ -14,7 +14,12 @@ type Props = React.PropsWithChildren<
 
 const Link = ({ children, href, className: propsClassName, variant, ...rest }: Props) => {
   const isInternalLink = href.startsWith('#') || href.startsWith('/');
-  const className = classNames(variant && styles.link, variant && styles[variant], propsClassName);
+  const className = classNames(
+    styles.outline,
+    variant && styles.link,
+    variant && styles[variant],
+    propsClassName
+  );
 
   if (isInternalLink) {
     return (

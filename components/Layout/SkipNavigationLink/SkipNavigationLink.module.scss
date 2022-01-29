@@ -1,0 +1,14 @@
+.link:focus {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1;
+  outline: 3px auto var(--color-primary);
+  background-color: var(--color-background);
+  padding: var(--space-m);
+  width: auto;
+  height: auto;
+  text-decoration: none;
+  color: var(--color-text);
+  clip: auto;
+}

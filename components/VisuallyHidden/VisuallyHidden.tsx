@@ -1,8 +1,15 @@
 import React from 'react';
+import classNames from 'clsx';
 import styles from './VisuallyHidden.module.scss';
 
-const VisuallyHidden = ({ children }: React.PropsWithChildren<unknown>) => (
-  <div className={styles.hidden}>{children}</div>
-);
+interface Props {
+  children: React.ReactElement;
+}
+
+const VisuallyHidden = ({ children }: Props) =>
+  React.cloneElement(children, {
+    ...children.props,
+    className: classNames(styles.hidden, children.props['className'])
+  });
 
 export default VisuallyHidden;

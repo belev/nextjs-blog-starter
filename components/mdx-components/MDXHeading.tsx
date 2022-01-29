@@ -20,7 +20,9 @@ const MDXHeading = ({ tag: Tag, children }: Props) => {
     <Tag className={classNames(styles.heading, styles[Tag])}>
       <Link href={`#${id}`} id={id} className={styles.anchor}>
         <Icon name="anchor" width="20" height="20" />
-        <VisuallyHidden>Link to {children}</VisuallyHidden>
+        <VisuallyHidden>
+          <span>Link to {children}</span>
+        </VisuallyHidden>
       </Link>
       <span>{children}</span>
     </Tag>
