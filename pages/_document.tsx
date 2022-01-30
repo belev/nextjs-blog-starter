@@ -3,7 +3,6 @@ import { Html, Head, Main, NextScript } from 'next/document';
 const MyDocument = () => (
   <Html lang="en">
     <Head>
-      <meta name="robots" content="noindex" />
       <link
         rel="preload"
         href="/fonts/ibm-plex-sans-latin-italic.woff2"
