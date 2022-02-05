@@ -1,5 +1,4 @@
 .heading {
-  position: relative;
   margin-top: var(--space-xxl);
   margin-bottom: var(--space-m);
 }
@@ -23,14 +22,21 @@
 }
 
 .anchor {
-  position: absolute;
-  top: 50%;
-  transform: translate(-150%, -50%);
+  display: inline-block;
+  transition: opacity 250ms;
+  opacity: 0;
   min-width: 20px;
+  vertical-align: middle;
   color: inherit;
+}
+
+.link {
+  text-decoration: none;
   scroll-margin-top: var(--space-xxl);
 
-  @media (max-width: 680px) {
-    display: none;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover + .anchor {
+      opacity: 1;
+    }
   }
 }

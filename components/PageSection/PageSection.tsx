@@ -15,7 +15,7 @@ const PageSection = ({ heading, navigation, children }: Props) => (
       <h2 className={styles.heading}>{heading}</h2>
       {navigation && (
         <div>
-          <Link href={navigation.href} variant="text">
+          <Link href={navigation.href} variant="secondary">
             {navigation.text}
           </Link>
         </div>
