@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import type { FrontMatter, Post, StaticPath } from '../types/Post';
 import getCompiledMDX from './prepare-mdx';
+import readingTime from 'reading-time';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
@@ -60,6 +61,7 @@ export async function getPostData(slug: string): Promise<Post> {
   return {
     slug,
     ...(matterResult.data as FrontMatter),
-    code: compiledMDX.code
+    code: compiledMDX.code,
+    readingTime: readingTime(fileContents)
   };
 }

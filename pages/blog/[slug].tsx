@@ -44,6 +44,7 @@ const PostComponent = ({ post }: Props) => {
           month: 'long',
           day: '2-digit'
         })}
+        {post.readingTime && ` ⦁ ${post.readingTime?.text}`}
       </p>
       {Component && <Component components={MDXComponents} />}
     </Layout>

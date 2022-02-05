@@ -1,3 +1,5 @@
+import type { ReadTimeResults } from 'reading-time';
+
 export interface FrontMatter {
   title: string;
   description: string;
@@ -7,6 +9,7 @@ export interface FrontMatter {
 export type Post = FrontMatter & {
   slug: string;
   code?: string;
+  readingTime?: ReadTimeResults;
 };
 
 export interface StaticPath {
