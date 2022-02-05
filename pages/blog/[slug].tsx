@@ -38,7 +38,13 @@ const PostComponent = ({ post }: Props) => {
   return (
     <Layout>
       <h1 className={styles.heading}>{post.title}</h1>
-      {post.date}
+      <p className={styles.publishedAt}>
+        {new Date(post.date).toLocaleDateString('en', {
+          year: 'numeric',
+          month: 'long',
+          day: '2-digit'
+        })}
+      </p>
       {Component && <Component components={MDXComponents} />}
     </Layout>
   );

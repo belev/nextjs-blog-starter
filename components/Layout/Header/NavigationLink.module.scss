@@ -3,7 +3,7 @@
   border-radius: var(--radius-m);
   padding: var(--space-xxs) var(--space-s);
   text-decoration: none;
-  color: var(--color-black-60);
+  color: var(--color-text-secondary);
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {

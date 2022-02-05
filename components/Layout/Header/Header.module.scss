@@ -14,7 +14,7 @@
 .rss {
   transition: color 0.3s;
   margin-right: calc(var(--space-xxs) * -1);
-  color: var(--color-black-60);
+  color: var(--color-text-secondary);
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
