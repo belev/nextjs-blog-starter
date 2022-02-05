@@ -9,6 +9,7 @@
   "rules": {
     "order/properties-alphabetical-order": null,
     "selector-class-pattern": "^[a-z][a-zA-Z0-9]+$",
-    "custom-property-empty-line-before": null
+    "custom-property-empty-line-before": null,
+    "value-keyword-case": ["lower", { "camelCaseSvgKeywords": true }]
   }
 }
